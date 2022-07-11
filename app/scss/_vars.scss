@@ -3,23 +3,47 @@ $title: #363853;
 $text: #31352b;
 $defolt: #ffffff;
 
-%rubik-300 {
+
+@mixin focusBorder($radius) {
+  outline-color: rgba(255, 104, 56, 0.7);
+  outline-width: 2px;
+  border-radius: $radius;
+}
+
+@mixin focusBackground {
+  background-color: rgba(255, 122, 80, 0.1);
+  border: 1px solid rgba(255, 104, 56, 0.7);
+}
+@mixin rubik300 {
   font-family: 'Rubik-Light', sans-serif;
   font-weight: 300;
 }
 
-%rubik-400 {
+@mixin rubik400 {
   font-family: 'Rubik-Regular', sans-serif;
   font-weight: 400;
 }
 
-%rubik-600 {
+@mixin rubik500 {
+  font-family: 'Rubik-Medium', sans-serif;
+  font-weight: 500;
+}
+
+@mixin rubik600 {
   font-family: 'Rubik-SemiBold', sans-serif;
   font-weight: 600;
 }
 
-%back-img {
-  background-position: center;
+@mixin backImg($position, $size) {
   background-repeat: no-repeat;
-  background-size: cover;
+  background-position: $position;
+  background-size: $size;
+}
+@mixin contentItemBefore {
+  display: block;
+  width: 36px;
+  height: 36px;
+  align-items: center;
+  margin-right: 30px;
+  
 }

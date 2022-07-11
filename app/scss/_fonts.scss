@@ -20,6 +20,17 @@
 }
 
 @font-face{
+  font-family: 'Rubik-Medium';
+  font-weight: 500;
+  font-style: normal;
+  src:  local('Rubik-Medium'),
+        url('../font/Rubik-Medium') format('woff2'),
+        url('../fonts/Rubik-Medium.woff') format('woff');
+  font-display: swap;
+
+}
+
+@font-face{
   font-family: 'Rubik-SemiBold';
   font-weight: 600;
   font-style: normal;

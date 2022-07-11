@@ -1,118 +1,179 @@
-@import 'vars';
-@import 'fonts';
 @import 'reset';
+@import 'fonts';
+@import 'vars';
 @import 'global';
+@import 'libs';
+
 
 
 .logo {
   transition: all 0.3s; 
+  
+  &:focus{
+    @include focusBorder (5px);
+  }
+  
   &:hover{
     opacity: 0.7;
-
   }
+
   &:active{
     opacity: 0.7;
   }
 }
 
-.logo:focus,
-.menu__link:focus,
-.button:focus,
-.header-content__link:focus,
-.menu__icon-link:focus,
-.footer-top__input:focus,
-.footer-top__btn button:focus,
-.social__link{
-  outline-color: rgba(255, 104, 56, 0.7);
-  outline-width: 2px;
-  border-radius: 5px;
+.menu {
+  display: flex;
+  justify-content: space-between;
+  padding: 60px 0;
+  align-items: center;
+ 
+  &__list{
+    display: flex;
+    margin-left: auto;
+    margin-right: 63px;
+  }
+ 
+  &__item{
+    font-size: 18px;
+    line-height: 1.2;
+  }
+  
+  &__item:not(:last-child) {
+    margin-right: 43px;
+  }
+  
+  &__link{
+    color: $text;
+    transition: all .5s; 
+    &:focus {
+      @include focusBorder (5px);
+    }
+
+    &:hover {
+      color: $accent;
+      cursor: pointer;
+    }
+    
+    &:active{
+      color: $text;
+      filter: drop-shadow(0px 2px 4px $text);
+    }
+  }
+
+  &__link--active{
+    color: $accent;
+  }
+  
+  &__icon {
+    display: flex;
+    position: relative;
+    align-items: center;
+  }
+  
+  &__icon-item--margin{
+    margin-right: 10px;
+  }
+  
+  &__icon-link {
+    width: 44px;
+    height: 44px;
+    border-radius: 6px;
+    svg{
+      fill: transparent;
+      stroke: $text;
+    }
+
+    &:focus {
+      @include focusBorder (5px);
+      background-color: rgba(255,122,80,.1);
+
+    }
+
+    &:hover{
+      background-color: rgba(255, 104, 56, 0.7);  
+      border: transparent;
+      svg{
+        fill: transparent;
+        stroke: $defolt;
+       };
+      .menu__icon-num{
+        color: $accent;
+        background-color: $defolt;
+
+      }
+    }
+
+    &:active{
+      background-color: rgba(255,122,80,.1);
+      border: transparent;
+      svg{
+        fill: transparent;
+        stroke: $text;
+      }
+    }
+  }
+      
+  &__icon-num{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    text-align: center;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    font-size: 10px;
+    color: $defolt;
+    background-color: $accent;
+  }
 }
 
-.header{
-  height: 100vh;
-  &-top {
-    display: flex;
-    justify-content: space-between;
-    padding: 60px 0;
-  }
 
-  &__wrap{
-    width: 50%;
-    background-position: right ;
-    background-repeat: no-repeat;
-    background-size: contain;
-  }
+.hero {
+  display: flex;
+  height: calc(100vh - 160px); 
+  margin-bottom: 120px;
+  width: 100%;
 
-  &-content{
-    display: flex;
-    height: calc(100vh - 160px);  
+  &__inner{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  width: 50%;
   }
-
-  &-content__inner{
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    justify-content: center;
-    width: 50%;
-  }
-  
   &__title{
-    font-size: 66px;
-    font-weight: 600;
-    color: $title;
-    line-height: 1.3;
-    text-transform: uppercase;
-    margin-bottom: 20px;
+  font-size: 66px;
+  font-weight: 600;
+  color: $title;
+  line-height: 1.3;
+  text-transform: uppercase;
+  margin-bottom: 20px;
   }
-  
+      
   &__title--color{
-    color:  $accent;
-    display: block; 
-  }
-  
-  &-content__text {
+  color:  $accent;
+  display: block;
+ }
+  &__text {
     color: $text ;
     line-height: 1.5;
     margin-bottom: 20px;
   }
-  
+
   &-buttons{
     display: flex;
-  }
-  
-  &-content__btn {
-    border-radius: 6px;
-    background-color: $accent;
-    padding: 12px 32px;
-    color: $defolt;
-    font-size: 18px;
-    text-align: center;
-    margin-right: 35px;
-    transition:  background-color 0.9s, color .7s; 
+  }  
 
-    &:focus {
-      background-color: rgba(255, 122, 80, 0.1);
-      color:$accent;
-    }
-    &:hover {
-      background-color:$defolt;
-      border: 1px solid rgba(255, 104, 56, 0.7);
-      color:$accent;
-      cursor: pointer;
-      box-shadow: 0 5px 5px rgba(255, 122, 80, 0.1);
-    }
-    &:active{
-      background-color: rgba(255, 122, 80, 0.1);
-      color:$accent;
-      border: none;
-    }
-  }
- 
-  &-content__link {
+  &__link {
     color: $title;
     text-decoration: underline;
     align-items: center;
     display: flex;
+  }
+
+  &--img {
+    @include backImg (right, contain); 
   }
 }
 
@@ -120,6 +181,8 @@
   transition: all .5s; 
   &:focus{
     text-decoration: none;
+    @include focusBorder (5px);
+  
   }
   &:hover{
     color: $accent;
@@ -134,100 +197,16 @@
  }
 
 
-.menu {
-  display: flex;
-  align-items: center;
- 
-  &__list{
-    display: flex;
-    margin-right: 63px;
-  }
- 
-  &__item{
-    font-size: 18px;
-    line-height: 1.2;
-  }
-  
-  &__item:not(:last-child) {
-    margin-right: 45px;
-  }
-  
-  &__link{
-    color: $text;
-    transition: all .5s; 
-    &:hover {
-      color: $accent;
-      cursor: pointer;
-    }
-    &:active{
-      color: $text;
-      filter: drop-shadow(0px 2px 4px $text);
-    
-    }
-  }
-
-  &__link--active{
-    color: $accent;
-  }
-  
-  &__icon {
-    display: flex;
-    position: relative;
-    align-items: center;
-  }
-  &__icon-link{
-    display: block;
-    width: 25px;
-    height: 25px;
-      // &:focus{
-      // background-color:  rgba(255, 122, 80, 0.1);
-      // &:hover {
-      //   background-color: rgba(255, 104, 56, 0.7);
-      //   path{
-      //     fill: $defolt;
-      //   }
-      // }
-    }
-  
-  &__icon-link--margin{
-    margin-right: 35px;
-  }
-    
-  &__icon-num{
-    position: absolute;
-    top: -4px;
-    right: -4px;
-    text-align: center;
-    width: 14px;
-    height: 14px;
-    border-radius: 50%;
-    font-size: 10px;
-    color: $defolt;
-    background-color: $accent;
-    &:hover {
-      color: $accent;
-      background-color: $defolt;
-
-    }
-  }
-  
-}
-
-
-.main {
-  padding: 120px 0;
-}
-
 .popular{
   &__title{
     margin-bottom: 60px;
-
   }
+
   &__fifter-btn{
     display: flex;
     justify-content: space-between;
-
   }
+
   &__btn {
     background-color: $defolt;
     padding: 13px 32px;
@@ -239,33 +218,39 @@
     color: $title;
     line-height: 1.3;
     margin-bottom: 45px;
+    transition: color 0.7s;
 
       &:hover{
-      background-color: rgba(255, 122, 80, 0.1);
-      border: 1px solid rgba(255, 104, 56, 0.7);
+      @include focusBackground;
       color:$accent;
       cursor: pointer;
-      path{
+      svg{
         fill: $accent;
       }
-
     }
-    &:active{
-      background-color: $defolt;
-      color: $text;
-      box-shadow:inset 0px -5px 15px rgba(255, 122, 80, 0.1);
 
-    }
-  }
-  &__btn--active {
-    color: $defolt;
-    background-color: $accent;
-  }
-  &__icon {
+      &:active{
+        background-color: $defolt;
+        color: $title;
+        box-shadow:inset 0px -5px 15px rgba(255, 122, 80, 0.1);
+        svg {
+          fill: $title;
+        }
+      }
+   }
+
+   &__icon {
     margin-right: 10px;
-  }
+    fill: $title;
+    stroke:transparent;
+    transition: fill 0.7s;
+//     &:hover {
+//       fill: $accent;
+//     }
+   }
 }
 
+ 
 .card {
     display: grid;
     grid-template-columns: 210px 210px 210px 210px 210px;
@@ -287,6 +272,9 @@
     }
   
   }
+  &-content__link{
+    @include focusBorder (5px);
+  }
 
   &__img {
     margin: 0 auto 10px;
@@ -297,16 +285,16 @@
     font-size: 15px;
     line-height: 1.2;
     margin-bottom: 10px;
-    @extend %rubik-400 ;
+    @include rubik400 ;
   }
   &__price {
-    display: block;
+    display: inline;
     color: $title;
-    font-weight: 500;
+    @include rubik500;
     font-size: 15px;
     line-height: 1.4;
     margin-bottom: 10px;
-    @extend %rubik-600;
+    @include rubik600;
     
   }
   &__btn {
@@ -316,10 +304,13 @@
     background-color: $accent;
     padding: 7px 16px;
     border-radius: 6px; 
+    font-size: 14px;
   }
   &__link-wrap{
     text-align: center;
+    margin-bottom: 120px;
   }
+
   &__link {
     color: $title;
     text-decoration: underline;
@@ -328,6 +319,319 @@
   
 }
 
+.features{
+  margin-bottom: 130px;
+  &-content{
+    margin: 0 85px;
+    @include backImg(left, contain);
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  &-content__inner{
+    width: 45%;
+    margin: 58px 0;
+  }
+
+  &-content__title{
+    text-align: start;
+    margin-bottom: 30px;
+  }
+  &-content__text {
+    color: $text;
+    line-height: 1.5;
+    margin-bottom: 30px;
+  }
+  
+  &-content__list{
+    margin-bottom: 30px;
+  }
+  &-content__item {
+    font-size: 24px;
+    line-height: 1.5;
+    color: $title;
+    display: flex;
+    
+  }
+  &-content__item:not(:last-child){
+    margin-bottom: 20px;
+  }
+  &__btn {
+    display: inline;
+    margin-bottom: 58px;
+    font-size: 18px;
+    letter-spacing: 0.03em;
+  }
+
+  &-content__item--time::before{
+    content: ' ';
+    background-image: url(../images/timericsvg.svg);
+    @include contentItemBefore ;
+    @include backImg (center, cover);
+  }
+  &-content__item--delivery::before{
+    content: ' '; background-image: url(../images/deliveryic.svg);
+    @include contentItemBefore ;
+    @include backImg (center, cover);
+
+  }
+  &-content__item--restoraunt::before{
+    content: ' ';
+    background-image: url(../images/resturentic.svg);
+    @include contentItemBefore ;
+    @include backImg (center, cover);
+  }
+}
+
+.restoraunt {
+  margin-bottom: 120px;
+
+  &__title {
+    margin-bottom: 45px;
+  }
+
+  &__panel{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 30px;         
+  }
+
+  &__panel-box{
+    display: inline-block;
+    background-color: $defolt;
+    border-radius: 10px;
+    box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.1);
+  }
+  
+  &__img{
+    margin-bottom: 15px;
+  }
+
+  &__name{
+    font-size: 24px;
+    color: $text;
+    margin-bottom: 20px;
+    padding: 0 20px;
+  }
+
+  &__info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    margin-bottom: 23px;
+  }
+
+  &__time {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  &__link{
+    display: inline-block;
+    background-color: $accent;
+    padding: 5px 27px 3px 28px;
+    border-radius: 20px;
+    transition: padding .7s;
+    svg{
+      fill: $defolt;
+    }
+
+    &:focus{
+      @include focusBorder (20px);
+      svg {
+        fill: $accent;
+      }
+    }
+    &:hover{
+      padding: 5px 4px 3px 51px;
+      svg {
+        fill: $accent;
+      }
+    }
+
+  
+    // &:active{
+    //   // svg {
+
+    //   // }
+    // }
+    
+  }
+
+}
+
+.restoraunt__time::before {
+  content: ' ';
+  background-image: url(../images/timer-restorauntsvg.svg);
+  @include backImg (center, cover);
+  display: block;
+  width: 22px;
+  height: 22px;
+  margin-right: 10px;
+}
+
+.reviews {
+  margin-bottom: 130px;
+  
+  &__title{
+    margin-bottom: 45px;
+
+  }
+  &__content{
+    display: flex !important;
+    align-items: center;
+    margin-bottom: 48px;
+
+  }
+  &__quote{
+    padding: 0 40px;
+    position: relative;
+  }
+  
+  &__quote-text {
+    font-style: italic;
+    line-height: 1.5;
+    margin-bottom: 30px ;    
+  }
+
+  &__img {
+    border-radius: 50%;
+    margin-right: 40px;
+
+  }
+  &__author-name {
+    display: block;
+    color: $accent;
+  }
+  &__preference {
+    display: block;
+    font-size: 14px;
+    color: $text;
+    margin-top: 15px;
+  }
+  .slick-dots{
+    display: flex;
+    justify-content: center;
+    li{
+      button{
+        padding: 0;
+        font-size: 0;
+        border: transparent;
+        background-color: transparent;
+        width: 15px;
+        height: 15px;
+        background-color: #c2c2c2;
+        border-radius: 50%;
+
+        &:hover{
+          cursor: pointer;
+        }
+      }
+      &.slick-active{
+        button{
+          background-color: $accent;
+        }
+      }
+
+      &:not(:last-child){
+        margin-right: 15px;
+      }
+    }
+
+  }
+
+  &__slider {
+    padding: 0 90px;
+    position: relative;
+    button{
+    
+      padding: 0;
+      font-size: 0;
+      border: transparent;
+      background-color: transparent;
+      width: 34px;
+      height: 34px;
+      border: 3px solid #c2c2c2;
+      border-radius: 50%;
+    }
+  }
+
+  .slick-prev{
+    background-image: url(../images/review-prev.svg);
+    @include backImg(center, 40% );
+    position: absolute;
+    bottom: -8px;
+    left: 40%;
+  }
+
+  .slick-next{
+    background-image: url(../images/review-next.svg);
+    @include backImg(center, 40%);
+    position: absolute;
+    bottom: 0;
+    bottom: -8px;
+    right: 40%;
+  }
+
+}
+
+.reviews__quote-text::before{
+  content: "";
+  background-image: url(../images/left“.svg);
+  display: inline-flex;
+  width: 24px;
+  height: 20px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  left: 0;
+}
+
+.reviews__quote-text::after{
+  content: "";
+  background-image: url(../images/right“.svg);
+  display: inline-flex;
+  width: 24px;
+  height: 20px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  right: 0;
+}
+
+.app {
+  margin-bottom: 120px;
+  
+  &__title {
+    text-align: left;
+    margin-bottom: 45px;
+  }
+  &__wrap{
+    @include backImg(right, contain);
+  }
+
+  &__inner{
+    padding: 40px 0;
+    width: 50%;
+  }
+  
+  &__text{
+    color: $text;
+    line-height: 1.5;
+    margin-bottom: 30px;
+  }
+
+  &__list {
+    display: flex;
+  }
+  
+  &__item:not(:last-child) {
+    margin-right: 30px;
+  }
+}
 
 .footer-logo{
   margin-bottom: 30px;
@@ -350,8 +654,10 @@
       width: 100%;
       margin-bottom: 12px;
       height: 44px;
-      
-      
+     
+      &:focus {
+        @include focusBorder (5px);
+      }
     }
     
     &__input::placeholder{
@@ -365,6 +671,7 @@
       display: inline-flex;
       justify-content:space-evenly;
       color: $defolt;
+      border: transparent;
       background-color: $accent;
       border-radius: 5px;
       padding: 13px 15px;
@@ -372,11 +679,11 @@
       font-size: 14px;
       height: 44px;
       align-items: center;
-      transition: all 0.9s;
+      transition: all 0.7s;
       
       &:focus{
-        background-color: rgba(255, 122, 80, 0.1);
-        border: 1px solid rgba(255, 104, 56, 0.7);
+        @include focusBackground;
+        @include focusBorder (5px);
         color:$accent;
         cursor: pointer;
         path{
@@ -393,7 +700,7 @@
         }
       }
       &:active{
-        border: none;
+        border: transparent;
         background-color: rgba(255, 122, 80, 0.1);
         color:$accent;
         cursor: pointer;
@@ -406,20 +713,39 @@
     &__info {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
+      margin: 0 auto;
     }
+
+  
     &__link {
       font-size: 18px;
       color: $text;
       line-height: 1.3;
     }
+
+    &__contact{
+      margin-right: auto;
+    }
+
     &__contact-link{
       display: flex;
       font-size: 16px;
       color: $text; 
       margin-bottom: 15px;
       line-height: 2;
+      transform: stroke .7s;
+      svg{
+        fill:transparent; 
+        stroke: $text; 
+      }
+      &:hover {
+        svg{
+          fill:transparent; 
+          stroke: $accent; 
+        }
+      }
     }
-    &__contact-img {
+    &__contact-icon {
       margin-right: 7px;
     }
 
@@ -446,25 +772,30 @@
     transition: all .5s;
 
     &:focus{
-      background-color: rgba(255, 122, 80, 0.1);
-      border: 1px solid rgba(255, 104, 56, 1);
+      @include focusBorder (50%);
+      background: rgba(255, 122, 80, 0.1);
       cursor: pointer;
+      
+      svg{
+        fill: $text;
+      }
+
     }
 
     &:hover{
       background-color: $accent;
-      path{
+      svg{
         fill: $defolt;
-        stroke: $defolt;
+       
        }
     }
 
     &:active{
       background-color: rgba(255, 122, 80, 0.1);
-      border: none;
-      path{
+      border: transparent;
+      svg{
         fill: $accent;
-        stroke: $accent;
+        
        }
 
     }
@@ -489,3 +820,5 @@
 
 
 @import 'media';
+
+
