@@ -432,6 +432,7 @@
     background-color: $accent;
     padding: 5px 27px 3px 28px;
     border-radius: 20px;
+    margin-right: 0;
     transition: padding .7s;
     svg{
       fill: $defolt;
@@ -450,12 +451,6 @@
       }
     }
 
-  
-    // &:active{
-    //   // svg {
-
-    //   // }
-    // }
     
   }
 
