@@ -20,6 +20,41 @@ $(function(){
      
       });
 
+  
+    if (window.matchMedia("(max-width: 576px)").matches) {
+        
+      $('.restoraunt__panel').slick({
+      
+          dots: true,
+          arrows:false,
+          infinite: true,
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          });
+    }
+      else{
+        $('.restoraunt__panel').slick('unslick');
+
+    }
+     
+ 
+   
+
    var mixer = mixitup('.popular__menu');
+
+
+   $('.burger, .burger-exit').on('click', function(){
+    
+    $('.menu__list').toggleClass('menu__list--active');
+    $('.header__logo').toggleClass('header__logo--active');
+    $('.contact').toggleClass('contact--active');
+    $('.burger-exit').toggleClass('burger-exit--active');
+    
+    // $('.wrapper').toggleClass('wrapper--active');
+    
+  
+  }); 
+  
+
   
 })

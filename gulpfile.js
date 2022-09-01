@@ -19,7 +19,7 @@ function browsersync() {
         },
         notofy: false
     });
-}
+};
 
 function styles() {
     return src('app/scss/style.scss')
@@ -28,7 +28,7 @@ function styles() {
     .pipe(autoprefixer({ overrideBrowserslist: ['last 10 versions'], grid: true }))
     .pipe(dest('app/css'))
     .pipe(browserSync.stream())
-}
+};
 
 function scripts() {
     return src ([
@@ -40,7 +40,7 @@ function scripts() {
     .pipe(uglify())
     .pipe(dest('app/js'))
     .pipe(browserSync.stream())
-}
+};
 
 function images() {
     return src('app/images/**/*.*')
@@ -56,7 +56,7 @@ function images() {
 	    })
     ]))
 	.pipe(dest('dist/images'))
-}
+};
 
 function svgSprites() {
     return src('app/images/icons/*.svg') 
@@ -80,7 +80,7 @@ function svgSprites() {
             })
           )
       .pipe(dest('app/images')); 
-  }
+  };
 
 function build() {
     return src([
@@ -89,11 +89,11 @@ function build() {
         'app/js/main.min.js',
     ], {base:'app'})
     .pipe(dest('dist'))
-}
+};
 
 function cleanDist() {
     return del('dist')
-}
+};
 
 
 function watching() {
@@ -101,7 +101,7 @@ function watching() {
     watch(['app/js/**/*.js', '!app/js/main.min.js'], scripts);
     watch(['app/**/*.html']).on('change', browserSync.reload);
     watch(['app/images/icons/*.svg'], svgSprites);
-}
+};
 
 
 exports.styles = styles;

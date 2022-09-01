@@ -6,6 +6,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "devDependencies": {
+    "@fancyapps/ui": "^4.0.31",
     "browser-sync": "^2.27.10",
     "del": "^6.1.1",
     "gulp": "^4.0.2",
@@ -22,7 +23,12 @@
     "slick-carousel": "^1.8.1"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "vue-cli-service serve",
+    "build": "npm run build:js && npm run build:css",
+    "lint": "vue-cli-service lint",
+    "build:js": "webpack --config ./webpack.config.js",
+    "build:css": "npx gulp sass"
   },
   "author": "Irina",
   "license": "ISC",
